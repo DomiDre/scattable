@@ -8,14 +8,17 @@ export class ElementsService {
   loadedElements = {};
   constructor() { }
 
-  get_element(elementSymbol: string) {
+  async get_element(elementSymbol: string) {
     const lookupElement = this.loadedElements[elementSymbol];
     if (lookupElement) {
       return lookupElement;
     } else {
-      import('./elements/' + elementSymbol)
+      return import('./elements/' + elementSymbol)
       .then(result => {
-        console.log(result[elementSymbol]);
+        this.loadedElements[elementSymbol] = result[elementSymbol];
+        return result[elementSymbol];
+      }).catch(error => {
+        console.error(error);
       });
     }
   }
