@@ -1,7 +1,7 @@
 const Og = {
     atomic_number: 118,
-    name: "Oganesson",
-    symbol: "Og",
+    name: 'Oganesson',
+    symbol: 'Og',
     mass: 294.0,
     common_ions: [],
     uncommon_ions: [],

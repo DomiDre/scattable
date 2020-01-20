@@ -1,7 +1,7 @@
 const Rg = {
     atomic_number: 111,
-    name: "Roentgenium",
-    symbol: "Rg",
+    name: 'Roentgenium',
+    symbol: 'Rg',
     mass: 272.0,
     common_ions: [],
     uncommon_ions: [],

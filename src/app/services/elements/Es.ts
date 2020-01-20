@@ -1,7 +1,7 @@
 const Es = {
     atomic_number: 99,
-    name: "Einsteinium",
-    symbol: "Es",
+    name: 'Einsteinium',
+    symbol: 'Es',
     mass: 252.0,
     common_ions: [3],
     uncommon_ions: [2, 4],

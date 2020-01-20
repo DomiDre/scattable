@@ -1,7 +1,7 @@
 const Lv = {
     atomic_number: 116,
-    name: "Livermorium",
-    symbol: "Lv",
+    name: 'Livermorium',
+    symbol: 'Lv',
     mass: 293.0,
     common_ions: [],
     uncommon_ions: [],

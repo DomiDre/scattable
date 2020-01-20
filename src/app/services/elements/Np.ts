@@ -1,7 +1,7 @@
 const Np = {
     atomic_number: 93,
-    name: "Neptunium",
-    symbol: "Np",
+    name: 'Neptunium',
+    symbol: 'Np',
     mass: 237.0,
     common_ions: [5],
     uncommon_ions: [2, 3, 4, 6, 7],

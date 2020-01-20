@@ -1,7 +1,7 @@
 const Mt = {
     atomic_number: 109,
-    name: "Meitnerium",
-    symbol: "Mt",
+    name: 'Meitnerium',
+    symbol: 'Mt',
     mass: 268.0,
     common_ions: [],
     uncommon_ions: [],

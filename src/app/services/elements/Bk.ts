@@ -1,7 +1,7 @@
 const Bk = {
     atomic_number: 97,
-    name: "Berkelium",
-    symbol: "Bk",
+    name: 'Berkelium',
+    symbol: 'Bk',
     mass: 247.0,
     common_ions: [3],
     uncommon_ions: [4],

@@ -1,7 +1,7 @@
 const Ds = {
     atomic_number: 110,
-    name: "Darmstadtium",
-    symbol: "Ds",
+    name: 'Darmstadtium',
+    symbol: 'Ds',
     mass: 281.0,
     common_ions: [],
     uncommon_ions: [],

@@ -1,7 +1,7 @@
 const Cm = {
     atomic_number: 96,
-    name: "Curium",
-    symbol: "Cm",
+    name: 'Curium',
+    symbol: 'Cm',
     mass: 247.0,
     common_ions: [3],
     uncommon_ions: [4, 6],

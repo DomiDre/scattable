@@ -1,7 +1,7 @@
 const n = {
     atomic_number: 0,
-    name: "Neutron",
-    symbol: "n",
+    name: 'Neutron',
+    symbol: 'n',
     mass: 1.008_664_915_97,
     common_ions: [],
     uncommon_ions: [],

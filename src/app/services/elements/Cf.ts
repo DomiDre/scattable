@@ -1,7 +1,7 @@
 const Cf = {
     atomic_number: 98,
-    name: "Californium",
-    symbol: "Cf",
+    name: 'Californium',
+    symbol: 'Cf',
     mass: 251.0,
     common_ions: [3],
     uncommon_ions: [2, 4],

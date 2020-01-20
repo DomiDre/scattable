@@ -1,7 +1,7 @@
 const Db = {
     atomic_number: 105,
-    name: "Dubnium",
-    symbol: "Db",
+    name: 'Dubnium',
+    symbol: 'Db',
     mass: 262.0,
     common_ions: [5],
     uncommon_ions: [],

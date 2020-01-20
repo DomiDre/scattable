@@ -1,7 +1,7 @@
 const Mc = {
     atomic_number: 115,
-    name: "Moscovium",
-    symbol: "Mc",
+    name: 'Moscovium',
+    symbol: 'Mc',
     mass: 289.0,
     common_ions: [],
     uncommon_ions: [],

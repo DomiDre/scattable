@@ -1,7 +1,7 @@
 const Nh = {
     atomic_number: 113,
-    name: "Nihonium",
-    symbol: "Nh",
+    name: 'Nihonium',
+    symbol: 'Nh',
     mass: 286.0,
     common_ions: [],
     uncommon_ions: [],

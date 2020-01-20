@@ -1,7 +1,7 @@
 const Rf = {
     atomic_number: 104,
-    name: "Rutherfordium",
-    symbol: "Rf",
+    name: 'Rutherfordium',
+    symbol: 'Rf',
     mass: 261.0,
     common_ions: [4],
     uncommon_ions: [],

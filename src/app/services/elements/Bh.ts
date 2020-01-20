@@ -1,7 +1,7 @@
 const Bh = {
     atomic_number: 107,
-    name: "Bohrium",
-    symbol: "Bh",
+    name: 'Bohrium',
+    symbol: 'Bh',
     mass: 264.0,
     common_ions: [7],
     uncommon_ions: [],

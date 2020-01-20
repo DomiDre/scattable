@@ -1,7 +1,7 @@
 const Lr = {
     atomic_number: 103,
-    name: "Lawrencium",
-    symbol: "Lr",
+    name: 'Lawrencium',
+    symbol: 'Lr',
     mass: 262.0,
     common_ions: [3],
     uncommon_ions: [],

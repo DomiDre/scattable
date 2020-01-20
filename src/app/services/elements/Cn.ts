@@ -1,7 +1,7 @@
 const Cn = {
     atomic_number: 112,
-    name: "Copernicium",
-    symbol: "Cn",
+    name: 'Copernicium',
+    symbol: 'Cn',
     mass: 285.0,
     common_ions: [2],
     uncommon_ions: [],

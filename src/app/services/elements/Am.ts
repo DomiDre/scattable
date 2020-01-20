@@ -1,7 +1,7 @@
 const Am = {
     atomic_number: 95,
-    name: "Americium",
-    symbol: "Am",
+    name: 'Americium',
+    symbol: 'Am',
     mass: 243.0,
     common_ions: [3],
     uncommon_ions: [2, 4, 5, 6, 7],

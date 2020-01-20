@@ -1,7 +1,7 @@
 const Sg = {
     atomic_number: 106,
-    name: "Seaborgium",
-    symbol: "Sg",
+    name: 'Seaborgium',
+    symbol: 'Sg',
     mass: 266.0,
     common_ions: [6],
     uncommon_ions: [],

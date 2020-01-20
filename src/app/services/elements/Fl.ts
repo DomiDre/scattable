@@ -1,7 +1,7 @@
 const Fl = {
     atomic_number: 114,
-    name: "Flerovium",
-    symbol: "Fl",
+    name: 'Flerovium',
+    symbol: 'Fl',
     mass: 289.0,
     common_ions: [],
     uncommon_ions: [],

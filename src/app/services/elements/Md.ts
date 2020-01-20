@@ -1,7 +1,7 @@
 const Md = {
     atomic_number: 101,
-    name: "Mendelevium",
-    symbol: "Md",
+    name: 'Mendelevium',
+    symbol: 'Md',
     mass: 258.0,
     common_ions: [3],
     uncommon_ions: [2],

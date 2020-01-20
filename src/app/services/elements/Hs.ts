@@ -1,7 +1,7 @@
 const Hs = {
     atomic_number: 108,
-    name: "Hassium",
-    symbol: "Hs",
+    name: 'Hassium',
+    symbol: 'Hs',
     mass: 277.0,
     common_ions: [8],
     uncommon_ions: [],

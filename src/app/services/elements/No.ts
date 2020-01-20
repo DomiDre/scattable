@@ -1,7 +1,7 @@
 const No = {
     atomic_number: 102,
-    name: "Nobelium",
-    symbol: "No",
+    name: 'Nobelium',
+    symbol: 'No',
     mass: 259.0,
     common_ions: [2],
     uncommon_ions: [3],

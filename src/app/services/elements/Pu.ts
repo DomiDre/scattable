@@ -1,7 +1,7 @@
 const Pu = {
     atomic_number: 94,
-    name: "Plutonium",
-    symbol: "Pu",
+    name: 'Plutonium',
+    symbol: 'Pu',
     mass: 244.0,
     common_ions: [4],
     uncommon_ions: [2, 3, 5, 6, 7],

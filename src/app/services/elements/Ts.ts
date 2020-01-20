@@ -1,7 +1,7 @@
 const Ts = {
     atomic_number: 117,
-    name: "Tennessine",
-    symbol: "Ts",
+    name: 'Tennessine',
+    symbol: 'Ts',
     mass: 294.0,
     common_ions: [],
     uncommon_ions: [],

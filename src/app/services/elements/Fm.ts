@@ -1,7 +1,7 @@
 const Fm = {
     atomic_number: 100,
-    name: "Fermium",
-    symbol: "Fm",
+    name: 'Fermium',
+    symbol: 'Fm',
     mass: 257.0,
     common_ions: [3],
     uncommon_ions: [2],
