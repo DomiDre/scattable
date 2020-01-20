@@ -1,0 +1,36 @@
+.app-container {
+    background-color: #FAFAFA;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+    flex: auto;
+    width: 100%;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	// max-width: 800px;
+}
+
+header {
+	margin-bottom: 25px;
+}
+
+.content-card {
+    margin: 5px;
+  }
+  
+
+@media only screen and (max-width: 800px) {
+	.main-container {
+		flex-direction: column;
+	}
+}
