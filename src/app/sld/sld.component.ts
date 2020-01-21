@@ -67,7 +67,6 @@ export class SldComponent implements OnInit {
 
     let molarMass = 0.0;
 
-    this.calculatedResult = [];
     this.identifiedElements = [];
     for (const element of loadedElements) {
       const elementCount = elementCounts[element.symbol];
@@ -120,6 +119,7 @@ export class SldComponent implements OnInit {
     }
     neutronSLD.uncertainty = Math.sqrt(neutronSLD.uncertainty);
 
+    // scale calculated values to proper unit
     const xrayFactor = density * 2.8179403227e-26 / (molarMass * this.elements.ATOMIC_MASS_UNIT);
     xraySLD.real *= xrayFactor;
     xraySLD.imag *= xrayFactor;
@@ -134,16 +134,8 @@ export class SldComponent implements OnInit {
     neutronXs.coherent *= neutronFactor * 1e-1;
     neutronXs.incoherent *= neutronFactor * 1e-1;
     neutronXs.absorption *= neutronFactor * 1e-1;
-
-    this.calculatedResult.push({
-      name: material,
-      xraySLD,
-      neutronSLD,
-      neutronXs,
-      molarMass
-    });
-
-    this.dataSource.data = [
+    // store in tree
+    const dataTree = [
       {
         name: material,
         children: [
@@ -212,9 +204,30 @@ export class SldComponent implements OnInit {
                   ' cm<sup>-1</sup>'
               },
               {
-                name: 'Transmission (after absorption+incoherent scattering): ' +
-                  this.decimalPipe.transform(Math.exp(-(neutronXs.absorption + neutronXs.incoherent)) * 100, '1.0-3') +
+                name: 'Transmission (abs+inc): ' +
+                  this.decimalPipe.transform(Math.exp(- thickness * (neutronXs.absorption + neutronXs.incoherent)) * 100, '1.0-3') +
                   ' %'
+              }
+            ]
+          },
+          {
+            name: 'Entered Material Parameters',
+            children: [
+              {
+                name: 'Density: ' +
+                  density + ' g/mL'
+              },
+              {
+                name: 'Thickness: ' +
+                  thickness + ' cm'
+              },
+              {
+                name: 'X-Ray Wavelength: ' +
+                  sourceXrays + ' &#x212B;'
+              },
+              {
+                name: 'Neutron Wavelength: ' +
+                  sourceNeutrons + ' &#x212B;'
               }
             ]
           }
@@ -222,7 +235,8 @@ export class SldComponent implements OnInit {
       }
     ];
 
-    this.treeControl.dataNodes = this.dataSource.data;
+    this.dataSource.data = dataTree;
+    this.treeControl.dataNodes = dataTree;
     this.treeControl.expandAll();
   }
 
