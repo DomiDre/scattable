@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SldComponent } from './sld/sld.component';
 import { MolarMassComponent } from './molar-mass/molar-mass.component';
 import { MagneticUnitsComponent } from './magnetic-units/magnetic-units.component';
+import { OnlyNumberDirective } from './directives/only-number.directive';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { MagneticUnitsComponent } from './magnetic-units/magnetic-units.componen
     FooterComponent,
     SldComponent,
     MolarMassComponent,
-    MagneticUnitsComponent
+    MagneticUnitsComponent,
+    OnlyNumberDirective
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { MagneticUnitsComponent } from './magnetic-units/magnetic-units.componen
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

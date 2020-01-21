@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatTreeModule } from '@angular/material/tree';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
@@ -28,6 +31,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
   declarations: [],
   imports: [
     MatButtonModule,
+    MatTableModule,
+    MatTreeModule,
     MatDialogModule,
     MatToolbarModule,
     MatMenuModule,
@@ -52,6 +57,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
   ],
   exports: [
     MatButtonModule,
+    MatTableModule,
+    MatTreeModule,
     MatDialogModule,
     MatToolbarModule,
     MatMenuModule,
