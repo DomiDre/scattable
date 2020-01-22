@@ -4,8 +4,14 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
   selector: '[appOnlyNumber]'
 })
 export class OnlyNumberDirective {
+  // from https://stackoverflow.com/questions/41465542/angular2-input-field-to-accept-only-numbers
 
-  private navigationKeys = [
+  // Allow decimal numbers. The \. is only allowed once to occur
+  private regex: RegExp = new RegExp(/^[0-9]+(\.[0-9]*){0,1}$/g);
+
+  // Allow key codes for special events. Reflect :
+  // Backspace, tab, end, home
+  private specialKeys: Array<string> = [
     'Backspace',
     'Delete',
     'Tab',
@@ -19,59 +25,32 @@ export class OnlyNumberDirective {
     'Copy',
     'Paste'
   ];
-  inputElement: HTMLElement;
-  constructor(public el: ElementRef) {
-    this.inputElement = el.nativeElement;
+
+  constructor(private el: ElementRef) {
   }
 
-  @HostListener('keydown', ['$event'])
-  onKeyDown(e: KeyboardEvent) {
-    if (
-      this.navigationKeys.indexOf(e.key) > -1 || // Allow: navigation keys: backspace, delete, arrows etc.
-      (e.key === 'a' && e.ctrlKey === true) || // Allow: Ctrl+A
-      (e.key === 'c' && e.ctrlKey === true) || // Allow: Ctrl+C
-      (e.key === 'v' && e.ctrlKey === true) || // Allow: Ctrl+V
-      (e.key === 'x' && e.ctrlKey === true) || // Allow: Ctrl+X
-      (e.key === 'a' && e.metaKey === true) || // Allow: Cmd+A (Mac)
-      (e.key === 'c' && e.metaKey === true) || // Allow: Cmd+C (Mac)
-      (e.key === 'v' && e.metaKey === true) || // Allow: Cmd+V (Mac)
-      (e.key === 'x' && e.metaKey === true) || // Allow: Cmd+X (Mac)
-      (e.key === '0') ||
-      (e.key === '1') ||
-      (e.key === '2') ||
-      (e.key === '3') ||
-      (e.key === '4') ||
-      (e.key === '5') ||
-      (e.key === '6') ||
-      (e.key === '7') ||
-      (e.key === '8') ||
-      (e.key === '9') ||
-      (e.key === '.')
-    ) {
-      // let it happen, don't do anything
-      return;
-    } else {
-      // stop the keypress
-      e.preventDefault();
-    }
+  @HostListener('keydown', [ '$event' ])
+  onKeyDown(event: KeyboardEvent) {
+      if ((this.specialKeys.indexOf(event.key) !== -1) || // Allow: navigation keys: backspace, delete, arrows etc.
+          (event.key === 'a' && event.ctrlKey === true) || // Allow: Ctrl+A
+          (event.key === 'c' && event.ctrlKey === true) || // Allow: Ctrl+C
+          (event.key === 'v' && event.ctrlKey === true) || // Allow: Ctrl+V
+          (event.key === 'x' && event.ctrlKey === true) || // Allow: Ctrl+X
+          (event.key === 'a' && event.metaKey === true) || // Allow: Cmd+A (Mac)
+          (event.key === 'c' && event.metaKey === true) || // Allow: Cmd+C (Mac)
+          (event.key === 'v' && event.metaKey === true) || // Allow: Cmd+V (Mac)
+          (event.key === 'x' && event.metaKey === true)) { // Allow: Cmd+X (Mac){
+          return;
+      }
+
+      // Do not use event.keycode this is deprecated.
+      // See: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
+      const current: string = this.el.nativeElement.value;
+      // We need this because the current value on the DOM element
+      // is not yet updated with the value from this event
+      const next: string = current.concat(event.key);
+      if (next && !String(next).match(this.regex)) {
+          event.preventDefault();
+      }
   }
-
-  @HostListener('paste', ['$event'])
-  onPaste(event: ClipboardEvent) {
-    event.preventDefault();
-    const pastedInput: string = event.clipboardData
-      .getData('text/plain')
-      .replace(/\D/g, ''); // get a digit-only string
-    document.execCommand('insertText', false, pastedInput);
-  }
-
-  @HostListener('drop', ['$event'])
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    const textData = event.dataTransfer.getData('text').replace(/\D/g, '');
-    this.inputElement.focus();
-    document.execCommand('insertText', false, textData);
-  }
-
-
 }
