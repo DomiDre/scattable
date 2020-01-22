@@ -18,6 +18,15 @@ export class MagneticUnitsComponent implements OnInit {
     {
       name: 'memu_kAm', viewName: 'memu/µL -> kA/m', factor: 1
     },
+    {
+      name: 'emu_cm3', viewName: 'emu/cm³ -> A/m', factor: 1e3
+    },
+    {
+      name: 'R_Ckg', viewName: 'R -> C/kg', factor: 2.58e-4
+    },
+    {
+      name: 'rad_Jkg', viewName: 'rad -> J/kg', factor: 0.01
+    },
   ];
 
   cgsConverterForm = new FormGroup({
