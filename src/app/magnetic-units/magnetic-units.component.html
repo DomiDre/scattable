@@ -4,7 +4,7 @@
     <form [formGroup]="cgsConverterForm">
         <mat-form-field>
             <input matInput appOnlyNumber placeholder="CGS" formControlName="cgsValue"
-            (input)="convert('cgs')">
+            inputmode="decimal" (input)="convert('cgs')">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Select Conversion</mat-label>
@@ -16,7 +16,7 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput appOnlyNumber placeholder="SI" formControlName="siValue"
-            (input)="convert('si')">
+            inputmode="decimal" (input)="convert('si')">
         </mat-form-field>
     </form>
 </div>
