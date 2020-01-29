@@ -5,6 +5,11 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { DecimalPipe } from '@angular/common';
 
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Material } from '../services/densities';
+
 interface Node {
   name: string;
   children?: Node[];
@@ -28,6 +33,7 @@ export class SldComponent implements OnInit {
 
   calculatedResult;
   identifiedElements;
+  identifiedMaterials: Observable<Material[]>;
 
   // displayedColumnsSLD: string[] = ['name', 'molarMass', 'xsld', 'nsld'];
   displayedColumnsElements: string[] = ['name', 'amount', 'molarMass', 'xsf', 'nsl'];
@@ -42,6 +48,19 @@ export class SldComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.identifiedMaterials = this.sldForm.get('material').valueChanges
+    .pipe(
+      startWith(''),
+      map(state => state ? this.elements.get_densities(state) : [])
+    );
+  }
+
+  selectedDensity($event: MatAutocompleteSelectedEvent) {
+    const material: Material = $event.option.value;
+    this.sldForm.patchValue({
+      material: material.symbol,
+      density: material.density
+  });
   }
 
   async calculate_sld() {

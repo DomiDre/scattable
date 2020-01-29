@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Material } from './densities';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ElementsService {
-
+  // densities = densities;
   validElements = new Set(['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na',
   'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe',
   'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Zr', 'Nb',
@@ -22,6 +23,8 @@ export class ElementsService {
   ATOMIC_MASS_UNIT = 1.660_539_066_60e-27;
 
   loadedElements = {};
+  loadedDensities: Map<string, Material[]>;
+
   constructor() { }
 
   async get_element(elementSymbol: string) {
@@ -147,5 +150,34 @@ export class ElementsService {
       }
       return { energy, f1, f2 };
     }
+  }
+
+  async get_density_data(): Promise<void | Map<string, Material[]>> {
+    if (this.loadedDensities) {
+      return this.loadedDensities;
+    } else {
+      return import('./densities')
+      .then(result => {
+        const densityKey = 'densities';
+        this.loadedDensities = result[densityKey];
+        return this.loadedDensities;
+      }).catch(error => {
+        console.error('Failed to load density data.');
+      });
+    }
+  }
+
+
+  get_densities(material: string): Material[] {
+    let result: Material[] = [];
+    if (typeof material !== 'string') {
+      // do nothing
+    } else if (!this.loadedDensities) {
+      // download density data
+      this.get_density_data();
+    } else if (this.loadedDensities.has(material)) {
+      result = this.loadedDensities.get(material);
+    }
+    return result;
   }
 }

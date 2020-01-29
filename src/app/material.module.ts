@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 // import { MatMenuModule } from '@angular/material/menu';
 // import { MatTabsModule } from '@angular/material/tabs';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -38,6 +38,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatDividerModule,
     MatSelectModule,
+    MatAutocompleteModule,
     // MatDialogModule,
     // MatMenuModule,
     // MatTabsModule,
@@ -64,6 +65,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatDividerModule,
     MatSelectModule,
+    MatAutocompleteModule,
     // MatDialogModule,
     // MatMenuModule,
     // MatTabsModule,
