@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Material } from './densities';
-
+import { densities, Material } from './densities';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +22,7 @@ export class ElementsService {
   ATOMIC_MASS_UNIT = 1.660_539_066_60e-27;
 
   loadedElements = {};
-  loadedDensities: Map<string, Material[]>;
+  loadedDensities: Map<string, Material[]> = densities;
 
   constructor() { }
 
@@ -152,29 +151,26 @@ export class ElementsService {
     }
   }
 
-  async get_density_data(): Promise<void | Map<string, Material[]>> {
-    if (this.loadedDensities) {
-      return this.loadedDensities;
-    } else {
-      return import('./densities')
-      .then(result => {
-        const densityKey = 'densities';
-        this.loadedDensities = result[densityKey];
-        return this.loadedDensities;
-      }).catch(error => {
-        console.error('Failed to load density data.');
-      });
-    }
-  }
+  // async get_density_data(): Promise<void | Map<string, Material[]>> {
+  //   if (this.loadedDensities) {
+  //     return this.loadedDensities;
+  //   } else {
+  //     return import('./densities')
+  //     .then(result => {
+  //       const densityKey = 'densities';
+  //       this.loadedDensities = result[densityKey];
+  //       return this.loadedDensities;
+  //     }).catch(error => {
+  //       console.error('Failed to load density data.');
+  //     });
+  //   }
+  // }
 
 
   get_densities(material: string): Material[] {
     let result: Material[] = [];
     if (typeof material !== 'string') {
       // do nothing
-    } else if (!this.loadedDensities) {
-      // download density data
-      this.get_density_data();
     } else if (this.loadedDensities.has(material)) {
       result = this.loadedDensities.get(material);
     }
